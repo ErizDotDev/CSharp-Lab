@@ -16,7 +16,10 @@ public class CanalLock
     // Change the upper gate.
     public void SetHighGate(bool open)
     {
-        HighWaterGateOpen = open;
+        if (open && (CanalLockWaterLevel == WaterLevel.High))
+            HighWaterGateOpen = true;
+        else if (open && (CanalLockWaterLevel == WaterLevel.Low))
+            throw new InvalidOperationException("Cannot open high gate when the water is low.");
     }
 
     // Change the low gate.
