@@ -16,19 +16,19 @@ public class CanalLock
     // Change the upper gate.
     public void SetHighGate(bool open)
     {
-        throw new NotImplementedException();
+        HighWaterGateOpen = open;
     }
 
     // Change the low gate.
     public void SetLowGate(bool open)
     {
-        throw new NotImplementedException();
+        LowWaterGateOpen = open;
     }
 
     // Change water level.
     public void SetWaterLevel(WaterLevel newLevel)
     {
-        throw new NotImplementedException();
+        CanalLockWaterLevel = newLevel;
     }
 
     public override string ToString() =>
