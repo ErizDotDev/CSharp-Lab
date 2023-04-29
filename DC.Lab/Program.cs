@@ -52,3 +52,53 @@ catch (InvalidOperationException)
 }
 
 Console.WriteLine($"Try to open upper gate: {canalGate}");
+
+Console.WriteLine();
+Console.WriteLine();
+
+try
+{
+    canalGate = new CanalLock();
+    canalGate.SetWaterLevel(WaterLevel.High);
+    canalGate.SetLowGate(open: true);
+}
+catch (InvalidOperationException)
+{
+    Console.WriteLine("Invalid operation: Can't open the lower gate. Water is high.");
+}
+
+Console.WriteLine($"Try to open lower gate: {canalGate}");
+
+// Change water level with gate open (2 tests)
+Console.WriteLine();
+Console.WriteLine();
+
+try
+{
+    canalGate = new CanalLock();
+    canalGate.SetLowGate(open: true);
+    canalGate.SetWaterLevel(WaterLevel.High);
+}
+catch (InvalidOperationException)
+{
+    Console.WriteLine("Invalid operation: Can't raise water level when the lower gate is open.");
+}
+
+Console.WriteLine($"Try to raise water with lower gate open: {canalGate}");
+
+Console.WriteLine();
+Console.WriteLine();
+
+try
+{
+    canalGate = new CanalLock();
+    canalGate.SetWaterLevel(WaterLevel.High);
+    canalGate.SetHighGate(open: true);
+    canalGate.SetWaterLevel(WaterLevel.Low);
+}
+catch (InvalidOperationException)
+{
+    Console.WriteLine("Invalid operation: Can't lower water level when the high gate is open.");
+}
+
+Console.WriteLine($"Try to lower gate with high gate open: {canalGate}");

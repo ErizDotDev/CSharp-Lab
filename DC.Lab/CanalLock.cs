@@ -40,7 +40,16 @@ public class CanalLock
     // Change water level.
     public void SetWaterLevel(WaterLevel newLevel)
     {
-        CanalLockWaterLevel = newLevel;
+        CanalLockWaterLevel = (newLevel, CanalLockWaterLevel, LowWaterGateOpen, HighWaterGateOpen) switch
+        {
+            (WaterLevel.Low, WaterLevel.Low, true, false) => WaterLevel.Low,
+            (WaterLevel.High, WaterLevel.High, false, true) => WaterLevel.High,
+            (WaterLevel.Low, _, false, false) => WaterLevel.Low,
+            (WaterLevel.High, _, false, false) => WaterLevel.High,
+            (WaterLevel.Low, WaterLevel.High, false, true) => throw new InvalidOperationException("Cannot lower water level when the high gate is open"),
+            (WaterLevel.High, WaterLevel.Low, true, false) => throw new InvalidOperationException("Cannot raise water level when the low gate is open"),
+            _ => throw new InvalidOperationException("Invalid internal state"),
+        };
     }
 
     public override string ToString() =>
