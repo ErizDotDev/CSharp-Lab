@@ -18,10 +18,7 @@ public class CanalLock
     {
         HighWaterGateOpen = (open, HighWaterGateOpen, CanalLockWaterLevel) switch
         {
-            (false, false, WaterLevel.High) => false,
-            (false, false, WaterLevel.Low) => false,
-            (false, true, WaterLevel.High) => false,
-            (false, true, WaterLevel.Low) => false, // should never happen
+            (false, _, _) => false,
             (true, false, WaterLevel.High) => true,
             (true, false, WaterLevel.Low) => throw new InvalidOperationException("Cannot open high gate when the water is low"),
             (true, true, WaterLevel.High) => true,
