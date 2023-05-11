@@ -15,6 +15,9 @@ c.AddOrder(o);
 o = new SampleOrder(new DateTime(2013, 7, 4), 25m);
 c.AddOrder(o);
 
+ICustomer theCustomer = c;
+Console.WriteLine($"Current discount: {theCustomer.ComputeLoyaltyDiscount()}");
+
 Console.WriteLine($"Data about {c.Name}");
 Console.WriteLine($"Joined on {c.DateJoined}. Made {c.PreviousOrders.Count()} orders, the last on {c.LastOrder}");
 Console.WriteLine("Reminders");
