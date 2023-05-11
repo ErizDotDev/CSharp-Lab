@@ -1,16 +1,17 @@
-﻿var phoneNumbers = new string[2];
-var person1 = new Person("Denzel", "dela Cruz", phoneNumbers);
-var person2 = new Person("Denzel", "dela Cruz", phoneNumbers);
+﻿var person1 = new Person("Denzel", "dela Cruz") { PhoneNumbers = new string[1] };
+Console.WriteLine(person1);
+
+var person2 = person1 with { FirstName = "Krystel" };
+Console.WriteLine(person2);
 Console.WriteLine(person1 == person2);
 
-person1.PhoneNumbers[0] = "+63 947 249 0987";
+person2 = person1 with { PhoneNumbers = new string[1] };
+Console.WriteLine(person2);
 Console.WriteLine(person1 == person2);
-
-Console.WriteLine("Checking why person1 and person2 are equal given the operation in line 6");
-Console.WriteLine(person1.PhoneNumbers[0]);
-Console.WriteLine(person2.PhoneNumbers[0]);
-Console.WriteLine(person1.PhoneNumbers == person2.PhoneNumbers);
-
 Console.WriteLine(ReferenceEquals(person1, person2));
 
-public record Person(string FirstName, string LastName, string[] PhoneNumbers);
+public record Person(string FirstName, string LastName)
+{
+    // PhoneNumbers is an immutable property
+    public string[] PhoneNumbers { get; init; } = new string[2];
+}
