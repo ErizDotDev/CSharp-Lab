@@ -25,4 +25,12 @@ public class SampleCustomer : ICustomer
 
         allOrders.Add(order);
     }
+
+    public decimal ComputeLoyaltyDiscount()
+    {
+        if (!PreviousOrders.Any())
+            return 0.50m;
+
+        return ICustomer.DefaultLoyaltyDiscount(this);
+    }
 }

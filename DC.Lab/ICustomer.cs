@@ -23,11 +23,13 @@ public interface ICustomer
     private static int orderCount = 10;
     private static decimal discountPercent = 0.10m;
 
-    public decimal ComputeLoyaltyDiscount()
+    public decimal ComputeLoyaltyDiscount() => DefaultLoyaltyDiscount(this);
+
+    protected static decimal DefaultLoyaltyDiscount(ICustomer c)
     {
         DateTime start = DateTime.Now - length;
 
-        if ((DateJoined < start) && (PreviousOrders.Count() > orderCount))
+        if ((c.DateJoined < start) && (c.PreviousOrders.Count() > orderCount))
         {
             return discountPercent;
         }
