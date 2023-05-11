@@ -16,6 +16,7 @@ o = new SampleOrder(new DateTime(2013, 7, 4), 25m);
 c.AddOrder(o);
 
 ICustomer theCustomer = c;
+ICustomer.SetLoyaltyThresholds(new TimeSpan(30, 0, 0, 0), 1, 0.25m);
 Console.WriteLine($"Current discount: {theCustomer.ComputeLoyaltyDiscount()}");
 
 Console.WriteLine($"Data about {c.Name}");
