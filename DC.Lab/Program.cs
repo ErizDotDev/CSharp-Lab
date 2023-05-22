@@ -26,3 +26,11 @@ else
     Console.WriteLine($"\n The get accessor: {getAccessibility}");
     Console.WriteLine($"The set accessor: {setAccessibility}");
 }
+
+DateTime? questionableDateTime = default;
+var (hasValue, value) = questionableDateTime;
+Console.WriteLine($"{{ HasValue = {hasValue}, Value = {value} }}");
+
+questionableDateTime = DateTime.Now;
+(hasValue, value) = questionableDateTime;
+Console.WriteLine($"{{ HasValue = {hasValue}, Value = {value} }}");
