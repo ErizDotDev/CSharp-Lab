@@ -83,4 +83,39 @@ public class TollCalculator
             }
         }
     }
+
+    public decimal PeakTimePremium(DateTime timeOfToll, bool inbound) =>
+        (IsWeekDay(timeOfToll), GetTimeBand(timeOfToll), inbound) switch
+        {
+            (true, TimeBand.Overnight, _) => 0.75m,
+            (true, TimeBand.Daytime, _) => 1.5m,
+            (true, TimeBand.MorningRush, true) => 2.0m,
+            (true, TimeBand.EveningRush, false) => 2.0m,
+            _ => 1.0m
+        };
+
+    private static bool IsWeekDay(DateTime timeOfToll) =>
+        timeOfToll.DayOfWeek switch
+        {
+            DayOfWeek.Saturday => false,
+            DayOfWeek.Sunday => false,
+            _ => true
+        };
+
+    private enum TimeBand
+    {
+        MorningRush,
+        Daytime,
+        EveningRush,
+        Overnight
+    }
+
+    private static TimeBand GetTimeBand(DateTime timeOfToll) =>
+        timeOfToll.Hour switch
+        {
+            < 6 or > 19 => TimeBand.Overnight,
+            < 10 => TimeBand.MorningRush,
+            < 16 => TimeBand.Daytime,
+            _ => TimeBand.EveningRush
+        };
 }
