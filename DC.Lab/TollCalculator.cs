@@ -36,4 +36,51 @@ public class TollCalculator
             { } => throw new ArgumentException(message: "Not a known vehicle type", paramName: nameof(vehicle)),
             null => throw new ArgumentNullException(nameof(vehicle)),
         };
+
+    public decimal PeakTimePremiumIfElse(DateTime timeOfToll, bool inbound)
+    {
+        if ((timeOfToll.DayOfWeek == DayOfWeek.Saturday) ||
+            (timeOfToll.DayOfWeek == DayOfWeek.Sunday))
+        {
+            return 1.0m;
+        }
+        else
+        {
+            int hour = timeOfToll.Hour;
+            if (hour < 6)
+            {
+                return 0.75m;
+            }
+            else if (hour < 10)
+            {
+                if (inbound)
+                {
+                    return 2.0m;
+                }
+                else
+                {
+                    return 1.0m;
+                }
+            }
+            else if (hour < 16)
+            {
+                return 1.5m;
+            }
+            else if (hour < 20)
+            {
+                if (inbound)
+                {
+                    return 1.0m;
+                }
+                else
+                {
+                    return 2.0m;
+                }
+            }
+            else // Overnight
+            {
+                return 0.75m;
+            }
+        }
+    }
 }
