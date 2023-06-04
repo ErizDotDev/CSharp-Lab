@@ -1,3 +1,3 @@
 ﻿using DC.Lab;
 
-Demo1.Execute();
+Demo2.Execute();
