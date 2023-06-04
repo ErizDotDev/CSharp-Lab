@@ -1,3 +1,3 @@
 ﻿using DC.Lab;
 
-IndicesRangesTypeSupport.Execute();
+IndicesRangesScenarios.Execute();
