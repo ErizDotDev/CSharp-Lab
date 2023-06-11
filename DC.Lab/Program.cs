@@ -13,19 +13,23 @@ class Program
         Coffee cup = PourCoffee();
         Console.WriteLine("coffee is ready");
 
-        Egg eggs = await FryEggsAsync(2);
-        Console.WriteLine("eggs are ready");
+        Task<Toast> toastTask = ToastBreadAsync(2);
+        Task<Egg> eggTask = FryEggsAsync(2);
+        Task<Bacon> baconTask = FryBaconAsync(3);
 
-        Bacon bacon = await FryBaconAsync(3);
-        Console.WriteLine("bacon is ready");
-
-        Toast toast = await ToastBreadAsync(2);
+        Toast toast = await toastTask;
         ApplyButter(toast);
         ApplyJam(toast);
         Console.WriteLine("toast is ready");
 
         Juice oj = PourOJ();
         Console.WriteLine("oj is ready");
+
+        Egg eggs = await eggTask;
+        Console.WriteLine("eggs are ready");
+
+        Bacon bacon = await baconTask;
+        Console.WriteLine("bacon is ready");
 
         Console.WriteLine("Breakfast is ready!");
 
