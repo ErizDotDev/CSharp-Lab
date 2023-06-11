@@ -13,20 +13,17 @@ class Program
         Coffee cup = PourCoffee();
         Console.WriteLine("coffee is ready");
 
+        Juice oj = PourOJ();
+        Console.WriteLine("oj is ready");
+
         Task<Egg> eggTask = FryEggsAsync(2);
         Task<Bacon> baconTask = FryBaconAsync(3);
         Task<Toast> toastTask = MakeToastWithButterAndJamAsync(2);
 
-        Toast toast = await toastTask;
+        await Task.WhenAll(eggTask, baconTask, toastTask);
+
         Console.WriteLine("toast is ready");
-
-        Juice oj = PourOJ();
-        Console.WriteLine("oj is ready");
-
-        Egg eggs = await eggTask;
         Console.WriteLine("eggs are ready");
-
-        Bacon bacon = await baconTask;
         Console.WriteLine("bacon is ready");
 
         Console.WriteLine("Breakfast is ready!");
@@ -89,7 +86,12 @@ class Program
         }
 
         Console.WriteLine("Start toasting...");
-        Task.Delay(3000).Wait();
+        await Task.Delay(2000);
+
+        //Console.WriteLine("Fire! Toast is ruined!");
+        //throw new InvalidOperationException("The toaster is on fire");
+
+        await Task.Delay(1000);
         Console.WriteLine("Remove toast from toaster");
 
         return new Toast();
