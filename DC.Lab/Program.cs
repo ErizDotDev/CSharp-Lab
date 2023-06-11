@@ -13,13 +13,11 @@ class Program
         Coffee cup = PourCoffee();
         Console.WriteLine("coffee is ready");
 
-        Task<Toast> toastTask = ToastBreadAsync(2);
         Task<Egg> eggTask = FryEggsAsync(2);
         Task<Bacon> baconTask = FryBaconAsync(3);
+        Task<Toast> toastTask = MakeToastWithButterAndJamAsync(2);
 
         Toast toast = await toastTask;
-        ApplyButter(toast);
-        ApplyJam(toast);
         Console.WriteLine("toast is ready");
 
         Juice oj = PourOJ();
@@ -72,6 +70,15 @@ class Program
         Console.WriteLine("put bacon on plate");
 
         return new Bacon();
+    }
+
+    private static async Task<Toast> MakeToastWithButterAndJamAsync(int number)
+    {
+        var toast = await ToastBreadAsync(number);
+        ApplyButter(toast);
+        ApplyJam(toast);
+
+        return toast;
     }
 
     private static async Task<Toast> ToastBreadAsync(int slices)
