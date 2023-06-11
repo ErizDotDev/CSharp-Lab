@@ -1,9 +1,15 @@
-﻿namespace DC.Lab;
+﻿using System.Diagnostics;
+
+namespace DC.Lab;
 
 class Program
 {
     static void Main(string[] args)
     {
+        var watch = new Stopwatch();
+
+        watch.Start();
+
         Coffee cup = PourCoffee();
         Console.WriteLine("coffee is ready");
 
@@ -22,6 +28,10 @@ class Program
         Console.WriteLine("oj is ready");
 
         Console.WriteLine("Breakfast is ready!");
+
+        watch.Stop();
+
+        Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
     }
 
     private static Coffee PourCoffee()
