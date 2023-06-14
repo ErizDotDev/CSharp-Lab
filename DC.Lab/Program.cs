@@ -6,6 +6,12 @@ class Program
 {
     static async Task Main(string[] args)
     {
+        //await ExecuteOriginalCode();
+        await ExecuteExperimentalCode();
+    }
+
+    static async Task ExecuteOriginalCode()
+    {
         var watch = new Stopwatch();
 
         watch.Start();
@@ -42,6 +48,22 @@ class Program
         watch.Stop();
 
         Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
+    }
+
+    private static async Task ExecuteExperimentalCode()
+    {
+        Task<Egg> eggTask = FryEggsAsync(2);
+        Task<Bacon> baconTask = FryBaconAsync(3);
+        Task<Toast> toastTask = MakeToastWithButterAndJamAsync(2);
+
+        var breakfastTasks = new List<Task> { eggTask, baconTask, toastTask };
+
+        while (breakfastTasks.Any())
+        {
+            Task finishedTask = await Task.WhenAny(breakfastTasks);
+            Console.WriteLine($"{finishedTask.Id} is finished");
+            breakfastTasks.Remove(finishedTask);
+        }
     }
 
     private static Coffee PourCoffee()
