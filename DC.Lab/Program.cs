@@ -32,8 +32,8 @@ class Program
         "https://learn.microsoft.com/xamarin"
     };
 
-    static Task Main(string[] args) => SumPageSizesAsync();
-
+    //static Task Main(string[] args) => SumPageSizesAsync();
+    static Task Main(string[] args) => DemoProcessTasksAsTheyComplete();
 
     static async Task SumPageSizesAsync()
     {
@@ -65,5 +65,68 @@ class Program
         Console.WriteLine($"{url,-60} {content.Length,10:#,#}");
 
         return content.Length;
+    }
+
+    static async Task DemoProcessTasksAsTheyComplete()
+    {
+        var tasks = new[]
+        {
+            Task.Delay(3000).ContinueWith(_ => 3),
+            Task.Delay(1000).ContinueWith(_ => 1),
+            Task.Delay(2000).ContinueWith(_ => 2),
+            Task.Delay(5000).ContinueWith(_ => 5),
+            Task.Delay(4000).ContinueWith(_ => 4),
+        };
+
+        //await ProcessInterleavedTasks(tasks);
+        await ProcessNonInterleavedTasks(tasks);
+    }
+
+    static async Task ProcessInterleavedTasks<T>(IEnumerable<Task<T>> tasks)
+    {
+        foreach (var bucket in Interleaved(tasks))
+        {
+            var t = await bucket;
+            var result = await t;
+            Console.WriteLine($"{DateTime.Now}: {result}");
+        }
+    }
+
+    static async Task ProcessNonInterleavedTasks<T>(IEnumerable<Task<T>> tasks)
+    {
+        foreach (var bucket in tasks)
+        {
+            var t = await bucket;
+            Console.WriteLine($"{DateTime.Now}: {t}");
+        }
+    }
+
+    static Task<Task<T>>[] Interleaved<T>(IEnumerable<Task<T>> tasks)
+    {
+        var inputTasks = tasks.ToList();
+
+        var buckets = new TaskCompletionSource<Task<T>>[inputTasks.Count];
+        var results = new Task<Task<T>>[buckets.Length];
+
+        for (int i = 0; i < buckets.Length; i++)
+        {
+            buckets[i] = new TaskCompletionSource<Task<T>>();
+            results[i] = buckets[i].Task;
+        }
+
+        int nextTaskIndex = -1;
+        Action<Task<T>> continuation = completed =>
+        {
+            var bucket = buckets[Interlocked.Increment(ref nextTaskIndex)];
+            bucket.TrySetResult(completed);
+        };
+
+        foreach (var inputTask in inputTasks)
+        {
+            inputTask.ContinueWith(continuation, CancellationToken.None,
+                TaskContinuationOptions.ExecuteSynchronously, TaskScheduler.Default);
+        }
+
+        return results;
     }
 }
