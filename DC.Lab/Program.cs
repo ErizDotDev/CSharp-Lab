@@ -52,11 +52,11 @@ class Program
 
     private static async Task ExecuteExperimentalCode()
     {
+        Task<Toast> toastTask = MakeToastWithButterAndJamAsync(2);
         Task<Egg> eggTask = FryEggsAsync(2);
         Task<Bacon> baconTask = FryBaconAsync(3);
-        Task<Toast> toastTask = MakeToastWithButterAndJamAsync(2);
 
-        var breakfastTasks = new List<Task> { eggTask, baconTask, toastTask };
+        var breakfastTasks = new List<Task> { toastTask, eggTask, baconTask };
 
         while (breakfastTasks.Any())
         {
