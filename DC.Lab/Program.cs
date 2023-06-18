@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Octokit;
+using System.Runtime.CompilerServices;
 
 namespace DC.Lab;
 
@@ -60,7 +61,9 @@ class Program
         };
 
         int num = 0;
-        await foreach (var issue in RunPagedQueryAsync(client, PagedIssueQuery, "docs"))
+        var cancellation = new CancellationTokenSource();
+        await foreach (var issue in RunPagedQueryAsync(client, PagedIssueQuery, "docs")
+            .WithCancellation(cancellation.Token))
         {
             Console.WriteLine(issue);
             Console.WriteLine($"Received {++num} issues in total");
@@ -89,7 +92,7 @@ class Program
 
     // <SnippetRunPagedQuery>
     private static async IAsyncEnumerable<JToken> RunPagedQueryAsync(GitHubClient client, string queryText,
-        string repoName)
+        string repoName, [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         var issueAndPRQuery = new GraphQLRequest
         {
