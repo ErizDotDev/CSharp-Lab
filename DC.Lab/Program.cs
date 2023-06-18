@@ -37,34 +37,20 @@ class Program
     static async Task Main()
     {
         Console.WriteLine("Application started.");
-        Console.WriteLine("Press the ENTER key to cancel..\n");
 
-        Task cancelTask = Task.Run(() =>
+        try
         {
-            while (Console.ReadKey().Key != ConsoleKey.Enter)
-            {
-                Console.WriteLine("Press the ENTER key to cancel..\n");
-            }
+            s_cts.CancelAfter(3500);
 
-            Console.WriteLine("\nENTER key pressed: cancelling downloads.\n");
-            s_cts.Cancel();
-        });
-
-        Task sumPageSizesTask = SumPageSizesAsync();
-
-        Task finishedTask = await Task.WhenAny(new[] { cancelTask, sumPageSizesTask });
-        if (finishedTask == cancelTask)
+            await SumPageSizesAsync();
+        }
+        catch (OperationCanceledException)
         {
-            // Wait for the cancellation to take place.
-            try
-            {
-                await sumPageSizesTask;
-                Console.WriteLine("Download task completed before cancel request was processed.");
-            }
-            catch (TaskCanceledException)
-            {
-                Console.WriteLine("Download task has been cancelled.");
-            }
+            Console.WriteLine("\nTasks cancelled: timed out\n");
+        }
+        finally
+        {
+            s_cts.Dispose();
         }
 
         Console.WriteLine("Application ending.");
