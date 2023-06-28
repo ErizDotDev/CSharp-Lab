@@ -7,6 +7,7 @@
             RunArraysAndVectorsDemo();
             RunDictionaryDemo(args);
             RunMultiDimensionalMap1();
+            RunMultiDimensionalMap2();
         }
 
         static void RunArraysAndVectorsDemo()
@@ -68,6 +69,57 @@
             Console.WriteLine(item);
             item = generator[0.30, 0.0001];
             Console.WriteLine(item);
+        }
+
+        static void RunMultiDimensionalMap2()
+        {
+            var data = new HistoricalWeatherData();
+
+            data["Chicago", new DateTime(1970, 6, 6)] = new Measurement
+            {
+                HiTemp = 75,
+                LoTemp = 58,
+                AirPressure = 30.2,
+            };
+
+            var item = data["Chicago", new DateTime(1970, 6, 6)];
+            Console.WriteLine(item.HiTemp);
+
+            item = data["Chicago", new DateTime(1970, 6, 6, 12, 30, 2)];
+            Console.WriteLine(item.LoTemp);
+
+            data["Chicago", new DateTime(1970, 6, 6)] = new Measurement
+            {
+                HiTemp = 85,
+                LoTemp = 38,
+                AirPressure = 30.2
+            };
+
+            item = data["Chicago", new DateTime(1970, 6, 6)];
+            Console.WriteLine(item.HiTemp);
+
+            item = data["Chicago", new DateTime(1970, 6, 6, 12, 30, 2)];
+            Console.WriteLine(item.LoTemp);
+
+            try
+            {
+                item = data["New York", new DateTime(1980, 5, 12)];
+                Console.WriteLine("Didn't get expected exception");
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Console.WriteLine("Encountered first exception: Location and time does not exist in storage");
+            }
+
+            try
+            {
+                item = data["Chicago", new DateTime(1980, 5, 12)];
+                Console.WriteLine("Didn't get expected exception");
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Console.WriteLine("Encountered second exception: Time does not exist in storage");
+            }
         }
     }
 }

@@ -28,7 +28,7 @@ public class ArgsAction
         {
             Action action;
             Action defaultAction = () => { Console.WriteLine("No valid option selected."); };
-            return argsActions.TryGetValue(s, out action) ? action : defaultAction;
+            return argsActions.TryGetValue(s, out action!) ? action : defaultAction;
         }
     }
 
