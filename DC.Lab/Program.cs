@@ -5,6 +5,7 @@
         static void Main(string[] args)
         {
             RunArraysAndVectorsDemo();
+            RunDictionaryDemo(args);
         }
 
         static void RunArraysAndVectorsDemo()
@@ -45,6 +46,16 @@
             {
                 Console.WriteLine("Exception encountered");
             }
+        }
+
+        static void RunDictionaryDemo(string[] args)
+        {
+            var argThings = new ArgsAction();
+            argThings.SetOption("--a", () => Console.WriteLine("-a option selected"));
+            argThings.SetOption("--e", () => Console.WriteLine("-e option selected"));
+
+            var processor = new ArgsProcessor(argThings);
+            processor.Process(args);
         }
     }
 }
