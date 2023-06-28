@@ -6,6 +6,7 @@
         {
             RunArraysAndVectorsDemo();
             RunDictionaryDemo(args);
+            RunMultiDimensionalMap1();
         }
 
         static void RunArraysAndVectorsDemo()
@@ -56,6 +57,17 @@
 
             var processor = new ArgsProcessor(argThings);
             processor.Process(args);
+        }
+
+        static void RunMultiDimensionalMap1()
+        {
+            var generator = new Mandelbrot(256);
+            var item = generator[0, 0];
+            Console.WriteLine(item);
+            item = generator[5, 5];
+            Console.WriteLine(item);
+            item = generator[0.30, 0.0001];
+            Console.WriteLine(item);
         }
     }
 }
