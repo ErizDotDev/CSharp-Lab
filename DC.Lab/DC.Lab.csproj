@@ -7,4 +7,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="NestedGroup.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="NestedGroup.cs" />
+  </ItemGroup>
+
 </Project>

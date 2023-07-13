@@ -1,3 +1,10 @@
-﻿using DC.Lab;
+﻿namespace DC.Lab;
 
-GroupQuery.Execute();
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        // GroupQuery.Execute();
+        NestedGroup.Execute();
+    }
+}
