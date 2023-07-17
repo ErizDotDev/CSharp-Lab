@@ -7,6 +7,7 @@ public class Program
         //GroupQuery.Execute();
         //NestedGroup.Execute();
         //GroupSubQuery.Execute();
-        GroupByContiguousKeys.Execute();
+        //GroupByContiguousKeys.Execute();
+        InnerJoinByGroupedJoin.Execute();
     }
 }
