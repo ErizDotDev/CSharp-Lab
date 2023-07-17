@@ -4,8 +4,9 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        // GroupQuery.Execute();
+        //GroupQuery.Execute();
         //NestedGroup.Execute();
-        GroupSubQuery.Execute();
+        //GroupSubQuery.Execute();
+        GroupByContiguousKeys.Execute();
     }
 }
