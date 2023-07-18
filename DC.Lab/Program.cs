@@ -9,6 +9,7 @@ public class Program
         //GroupSubQuery.Execute();
         //GroupByContiguousKeys.Execute();
         //InnerJoinByGroupedJoin.Execute();
-        LeftOuterJoin.Execute();
+        //LeftOuterJoin.Execute();
+        OrderJoinResults.Execute();
     }
 }
