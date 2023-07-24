@@ -11,6 +11,7 @@ public class Program
         //InnerJoinByGroupedJoin.Execute();
         //LeftOuterJoin.Execute();
         //OrderJoinResults.Execute();
-        ProjectionOperation.Execute();
+        //ProjectionOperation.Execute();
+        SetOperation.Execute();
     }
 }
