@@ -10,6 +10,7 @@ public class Program
         //GroupByContiguousKeys.Execute();
         //InnerJoinByGroupedJoin.Execute();
         //LeftOuterJoin.Execute();
-        OrderJoinResults.Execute();
+        //OrderJoinResults.Execute();
+        ProjectionOperation.Execute();
     }
 }
