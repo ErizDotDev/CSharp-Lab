@@ -1,0 +1,43 @@
+﻿namespace DC.Lab;
+
+public class GroupJoin
+{
+    public static void Execute()
+    {
+
+        Person magnus = new("Magnus", "Hedlund");
+        Person terry = new("Terry", "Adams");
+        Person charlotte = new("Charlotte", "Weiss");
+        Person arlene = new("Arlene", "Huff");
+
+        List<Person> people = new() { magnus, terry, charlotte, arlene };
+
+        List<Pet> pets = new()
+        {
+            new("Barley", terry),
+            new("Boots", terry),
+            new("Whiskers", charlotte),
+            new("Blue Moon", terry),
+            new("Daisy", magnus),
+        };
+
+        var query =
+           from person in people
+           join pet in pets on person equals pet.Owner into gj
+           select new
+           {
+               OwnerName = person.FirstName,
+               Pets = gj
+           };
+
+        foreach (var v in query)
+        {
+            Console.WriteLine(v.OwnerName);
+
+            foreach (var pet in v.Pets)
+            {
+                Console.WriteLine($"\t{pet.Name}");
+            }
+        }
+    }
+}
