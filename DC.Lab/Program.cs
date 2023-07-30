@@ -14,6 +14,7 @@ public class Program
         //ProjectionOperation.Execute();
         //SetOperation.Execute();
         //PartitioningData.Execute();
-        GroupJoin.Execute();
+        //GroupJoin.Execute();
+        CustomJoin.Execute();
     }
 }
