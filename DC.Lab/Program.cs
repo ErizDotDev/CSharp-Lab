@@ -4,6 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        FindFileByExtension.Execute();
+        //FindFileByExtension.Execute();
+        GroupByExtension.Execute();
     }
 }
