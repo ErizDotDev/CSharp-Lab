@@ -6,6 +6,7 @@ class Program
     {
         //FindFileByExtension.Execute();
         //GroupByExtension.Execute();
-        QuerySize.Execute();
+        //QuerySize.Execute();
+        FileComparer.Execute();
     }
 }
