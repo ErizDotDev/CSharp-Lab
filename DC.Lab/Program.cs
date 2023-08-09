@@ -9,6 +9,7 @@ class Program
         //QuerySize.Execute();
         //FileComparer.Execute();
         //QueryFileBySize.Execute();
-        QueryDuplicateFileNames.Execute();
+        //QueryDuplicateFileNames.Execute();
+        QueryContents.Execute();
     }
 }
