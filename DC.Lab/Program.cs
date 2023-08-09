@@ -7,6 +7,8 @@ class Program
         //FindFileByExtension.Execute();
         //GroupByExtension.Execute();
         //QuerySize.Execute();
-        FileComparer.Execute();
+        //FileComparer.Execute();
+        //QueryFileBySize.Execute();
+        QueryDuplicateFileNames.Execute();
     }
 }
