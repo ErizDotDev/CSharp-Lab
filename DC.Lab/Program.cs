@@ -18,6 +18,7 @@ public class Program
         //CustomJoin.Execute();
         //WordCount.Execute();
         //SentenceCount.Execute();
-        QueryAString.Execute();
+        //QueryAString.Execute();
+        QueryWithRegex.Execute();
     }
 }
