@@ -19,6 +19,7 @@ public class Program
         //WordCount.Execute();
         //SentenceCount.Execute();
         //QueryAString.Execute();
-        QueryWithRegex.Execute();
+        //QueryWithRegex.Execute();
+        JoinStrings.Execute();
     }
 }
