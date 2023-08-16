@@ -15,6 +15,7 @@ public class Program
         //SetOperation.Execute();
         //PartitioningData.Execute();
         //GroupJoin.Execute();
-        CustomJoin.Execute();
+        //CustomJoin.Execute();
+        WordCount.Execute();
     }
 }
