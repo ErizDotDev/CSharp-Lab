@@ -20,6 +20,7 @@ public class Program
         //SentenceCount.Execute();
         //QueryAString.Execute();
         //QueryWithRegex.Execute();
-        JoinStrings.Execute();
+        //JoinStrings.Execute();
+        SortLines.Execute();
     }
 }
