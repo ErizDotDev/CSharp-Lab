@@ -22,6 +22,7 @@ public class Program
         //QueryWithRegex.Execute();
         //JoinStrings.Execute();
         //SortLines.Execute();
-        ReorderingCsv.Execute();
+        //ReorderingCsv.Execute();
+        CombineCompareCollection.Execute();
     }
 }
