@@ -23,6 +23,7 @@ public class Program
         //JoinStrings.Execute();
         //SortLines.Execute();
         //ReorderingCsv.Execute();
-        CombineCompareCollection.Execute();
+        //CombineCompareCollection.Execute();
+        SplitFileToManyFiles.Execute();
     }
 }
