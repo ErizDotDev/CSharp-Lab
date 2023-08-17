@@ -21,6 +21,7 @@ public class Program
         //QueryAString.Execute();
         //QueryWithRegex.Execute();
         //JoinStrings.Execute();
-        SortLines.Execute();
+        //SortLines.Execute();
+        ReorderingCsv.Execute();
     }
 }
