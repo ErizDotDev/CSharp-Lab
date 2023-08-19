@@ -25,6 +25,6 @@ public class Program
         //ReorderingCsv.Execute();
         //CombineCompareCollection.Execute();
         //SplitFileToManyFiles.Execute();
-        ComputeColumns.Execute();
+        //ComputeColumns.Execute();
     }
 }
