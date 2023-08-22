@@ -1,3 +1,4 @@
 ﻿using DC.Lab;
 
-AttributeAccess.Execute();
+//AttributeAccess.Execute();
+QueryAssemblyMetadata.Execute();
