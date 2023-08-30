@@ -1,4 +1,5 @@
 ﻿using DC.Lab;
 
 //ExecutingExpressionTrees.Execute();
-InterpretingExpressionTrees.Execute();
+//InterpretingExpressionTrees.Execute();
+BuildingExpressionTrees.Execute();
