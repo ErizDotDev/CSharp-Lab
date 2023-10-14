@@ -2,4 +2,5 @@
 
 //ExecutingExpressionTrees.Execute();
 //InterpretingExpressionTrees.Execute();
-BuildingExpressionTrees.Execute();
+//BuildingExpressionTrees.Execute();
+TranslatingExpressionTrees.Execute();
