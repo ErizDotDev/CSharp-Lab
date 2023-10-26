@@ -7,4 +7,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\User\sandbox\C#\DC.Lab\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\User\sandbox\C#\DC.Lab\.editorconfig" />
+  </ItemGroup>
+
 </Project>
