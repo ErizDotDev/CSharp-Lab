@@ -8,17 +8,14 @@ public class CustomEventArgs : EventArgs
         Message = message;
     }
 
-    public string Message
-    {
-        get; set;
-    }
+    public string Message { get; set; }
 }
 
 // Class that publishes an event
 class Publisher
 {
     // Declare the event using EventHandler<T>
-    public event EventHandler<CustomEventArgs> RaiseCustomEvent;
+    public event EventHandler<CustomEventArgs>? RaiseCustomEvent;
 
     public void DoSomething()
     {
