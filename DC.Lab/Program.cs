@@ -1,5 +1,29 @@
 ﻿using System.Text;
 
+public interface IAdditionSubtraction<T> where T : IAdditionSubtraction<T>
+{
+    public abstract static T operator +(T left, T right);
+    public abstract static T operator -(T left, T right);
+}
+
+public class MyNumber : IAdditionSubtraction<MyNumber>
+{
+    private int Value;
+
+    public MyNumber(int value)
+    {
+        this.Value = value;
+    }
+
+    public int GetValue() => Value;
+
+    public static MyNumber operator +(MyNumber left, MyNumber right) =>
+        new MyNumber(left.Value + right.Value);
+
+    public static MyNumber operator -(MyNumber left, MyNumber right) =>
+        new MyNumber(left.Value - right.Value);
+}
+
 class Program
 {
     // Demonstrates generic constraint limitation in terms of equality
@@ -47,5 +71,16 @@ class Program
 
         foreach (var pair in map)
             Console.WriteLine($"{pair.Key}:\t{pair.Value}");
+
+        Console.WriteLine("\nType arguments implementing declared interface:");
+
+        MyNumber num1 = new(5);
+        MyNumber num2 = new(3);
+
+        MyNumber sum = num1 + num2;
+        MyNumber difference = num1 - num2;
+
+        Console.WriteLine($"Sum: {sum.GetValue()}");
+        Console.WriteLine($"Difference: {difference.GetValue()}");
     }
 }
