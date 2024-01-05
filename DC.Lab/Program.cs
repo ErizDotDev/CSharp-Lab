@@ -17,14 +17,14 @@ class Program
         public static bool HasSeeds => false;
     }
 
-    static void DisplayHasSeeds<T>(T fruit) where T : IFruit
+    static void DisplayHasSeeds<T>() where T : IFruit
     {
         Console.WriteLine(T.HasSeeds);
     }
 
     static void Main()
     {
-        DisplayHasSeeds(new Watermelon());
-        DisplayHasSeeds(new Grape());
+        DisplayHasSeeds<Watermelon>();
+        DisplayHasSeeds<Grape>();
     }
 }
