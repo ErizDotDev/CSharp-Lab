@@ -13,5 +13,10 @@ namespace TypeEquivalenceRuntime
             Console.WriteLine("Please enter a value:");
             _userInput = Console.ReadLine();
         }
+
+        public DateTime GetDate()
+        {
+            return DateTime.Now;
+        }
     }
 }

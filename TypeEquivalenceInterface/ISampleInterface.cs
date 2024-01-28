@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 
 namespace TypeEquivalenceInterface
 {
@@ -8,5 +9,6 @@ namespace TypeEquivalenceInterface
     {
         void GetUserInput();
         string UserInput { get; }
+        DateTime GetDate();
     }
 }
