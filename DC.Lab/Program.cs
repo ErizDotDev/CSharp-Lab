@@ -24,5 +24,14 @@ class Program
 
         pt = new Point2(8, 5);
         Console.WriteLine(pt.GetHashCode());
+
+        // EXAMPLE 3
+        Console.WriteLine("\nPrinting example 3...\n");
+
+        var pt3 = new Point3(5, 8);
+        Console.WriteLine(pt3.GetHashCode());
+
+        pt3 = new Point3(8, 5);
+        Console.WriteLine(pt3.GetHashCode());
     }
 }
