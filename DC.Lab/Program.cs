@@ -4,7 +4,8 @@ public class Program
 {
     static void Main()
     {
-        ExecuteFirstCodeSample();
+        //ExecuteFirstCodeSample();
+        ExecuteSecondCodeSample();
     }
 
     static void ExecuteFirstCodeSample()
@@ -13,5 +14,13 @@ public class Program
 
         Console.WriteLine(auto.ToString());
         Console.WriteLine(auto.ToString("A"));
+    }
+
+    static void ExecuteSecondCodeSample()
+    {
+        var list = new CList<int>();
+        list.Add(1000);
+        list.Add(2000);
+        Console.WriteLine(list.ToString());
     }
 }
