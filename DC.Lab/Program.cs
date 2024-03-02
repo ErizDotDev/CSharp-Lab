@@ -5,7 +5,8 @@ public class Program
     static void Main()
     {
         //ExecuteFirstCodeSample();
-        ExecuteSecondCodeSample();
+        //ExecuteSecondCodeSample();
+        ExecuteThirdCodeSample();
     }
 
     static void ExecuteFirstCodeSample()
@@ -19,8 +20,21 @@ public class Program
     static void ExecuteSecondCodeSample()
     {
         var list = new CList<int>();
+
         list.Add(1000);
         list.Add(2000);
+
         Console.WriteLine(list.ToString());
+    }
+
+    static void ExecuteThirdCodeSample()
+    {
+        var list = new List<int>();
+
+        list.Add(1000);
+        list.Add(2000);
+
+        Console.WriteLine(list.ToString2());
+        Console.WriteLine(list.ToString("N0"));
     }
 }
