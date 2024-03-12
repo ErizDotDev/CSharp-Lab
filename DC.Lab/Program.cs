@@ -2,40 +2,24 @@
 
 namespace DC.Lab;
 
-public delegate void D1(C c, string s);
+public delegate void D1(C1 c, string s);
 public delegate void D2(string s);
 public delegate void D3();
-
-public class C
-{
-    private int id;
-
-    public C(int id)
-    {
-        this.id = id;
-    }
-
-    public void M1(string s)
-    {
-        Console.WriteLine($"Instance method M1 on C: id = {this.id}, s = {s}");
-    }
-
-
-    public static void M2(string s)
-    {
-        Console.WriteLine($"Static method M2 on C: s = {s}");
-    }
-}
 
 class Program
 {
     static void Main()
     {
-        var c1 = new C(42);
+        RunFirstExample();
+    }
 
-        var mi1 = typeof(C).GetMethod("M1",
+    static void RunFirstExample()
+    {
+        var c1 = new C1(42);
+
+        var mi1 = typeof(C1).GetMethod("M1",
             BindingFlags.Public | BindingFlags.Instance);
-        var mi2 = typeof(C).GetMethod("M2",
+        var mi2 = typeof(C1).GetMethod("M2",
             BindingFlags.Public | BindingFlags.Static);
 
         D1 d1;
@@ -71,7 +55,7 @@ class Program
         d1 = (D1)Delegate.CreateDelegate(typeof(D1), null, mi1!);
 
         d1(c1, "Hello, World!");
-        d1(new C(5280), "Hi mom!");
+        d1(new C1(5280), "Hi mom!");
 
         Console.WriteLine("\nAn open static method.");
         //Similar to the first scenario but with static methods.
