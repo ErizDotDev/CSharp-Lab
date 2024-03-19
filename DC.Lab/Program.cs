@@ -7,8 +7,11 @@ class Program
         //var c = new Counter1(new Random().Next(10));
         //c.ThresholdReached += c_ThresholdReached!;
 
-        var c = new Counter2(new Random().Next(10));
-        c.ThresholdReached += c_ThresholdReached2!;
+        //var c = new Counter2(new Random().Next(10));
+        //c.ThresholdReached += c_ThresholdReached2!;
+
+        var c = new Counter3(new Random().Next(10));
+        c.ThresholdReached += c_ThresholdReached2;
 
         Console.WriteLine("Press 'a' key to increase total");
 
