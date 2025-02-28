@@ -4,7 +4,7 @@
 public interface IPointy
 {
     //Implicitly public and abstract.
-    byte GetNumberOfPoints();
+    //byte GetNumberOfPoints();
 
     //A read-write property in an interface would look like:
     //string PropName { get; set; }

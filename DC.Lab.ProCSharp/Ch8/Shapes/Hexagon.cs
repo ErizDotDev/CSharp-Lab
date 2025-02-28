@@ -1,7 +1,9 @@
 ﻿namespace CustomInterfaces;
 
-class Hexagon : Shape
+class Hexagon : Shape, IPointy
 {
+    public byte Points => 6;
+
     public Hexagon() { }
 
     public override void Draw()
