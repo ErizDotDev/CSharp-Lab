@@ -66,4 +66,15 @@ for (int i = 0; i < myShapes.Length; i++)
     }
 }
 
+Console.WriteLine();
+
+//This method returns the first object in the array theat implements IPointy.
+static IPointy? FindFirstPointyShape(Shape[] shapes) 
+    => shapes.FirstOrDefault(s => s is IPointy) as IPointy;
+
+//Get first pointy item.
+var firstPointyItem = FindFirstPointyShape(myShapes);
+//To be safe, use the null conditional operator.
+Console.WriteLine($"The item has {firstPointyItem?.Points} points");
+
 Console.ReadLine();
