@@ -41,4 +41,29 @@ Console.WriteLine($"\nExample property: {IRegularPointy.ExampleProperty}");
 IRegularPointy.ExampleProperty = "Updated";
 Console.WriteLine($"Example property: {IRegularPointy.ExampleProperty}");
 
+Console.WriteLine();
+
+//I'll draw anyone supporting IDraw3D.
+static void DrawIn3D(IDraw3D itf3d)
+{
+    Console.WriteLine("-> Drawing IDraw3D compatible type");
+    itf3d.Draw3D();
+}
+
+Shape[] myShapes = {
+    new Hexagon(),
+    new Circle(),
+    new Triangle(),
+    new Circle()
+};
+
+for (int i = 0; i < myShapes.Length; i++)
+{
+    //Can I draw you in 3D?
+    if (myShapes[i] is IDraw3D s)
+    {
+        DrawIn3D(s);
+    }
+}
+
 Console.ReadLine();
