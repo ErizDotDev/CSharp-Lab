@@ -37,4 +37,8 @@ Console.WriteLine($"DC has {sq.NumberOfSides} of length {sq.SideLength} and a pe
 //You can also resolve this by replacing line 27 with:
 //IRegularPointy sq = new Square { NumberOfSides = 4, SideLength = 4 };
 
+Console.WriteLine($"\nExample property: {IRegularPointy.ExampleProperty}");
+IRegularPointy.ExampleProperty = "Updated";
+Console.WriteLine($"Example property: {IRegularPointy.ExampleProperty}");
+
 Console.ReadLine();
