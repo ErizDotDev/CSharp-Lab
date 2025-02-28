@@ -1,4 +1,5 @@
 ﻿using CustomInterfaces;
+using System.Security.AccessControl;
 
 Console.WriteLine("***** A First Look at Interfaces *****\n");
 CloneableExample();
@@ -20,5 +21,20 @@ static void CloneableExample()
         Console.WriteLine($"Your clone is a: {theClone.GetType().Name}");
     }
 }
+
+Console.WriteLine("\n***** Fun with Interfaces *****\n");
+
+var sq = new Square { NumberOfSides = 4, SideLength = 4 };
+
+sq.Draw();
+
+//This won't compile
+//Console.WriteLine($"DC has {sq.NumberOfSides} of length {sq.SideLength} and a perimeter of {sq.Perimeter}");
+
+//To resolve, you can do this:
+Console.WriteLine($"DC has {sq.NumberOfSides} of length {sq.SideLength} and a perimeter of {((IRegularPointy)sq).Perimeter}");
+
+//You can also resolve this by replacing line 27 with:
+//IRegularPointy sq = new Square { NumberOfSides = 4, SideLength = 4 };
 
 Console.ReadLine();
