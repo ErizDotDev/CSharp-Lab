@@ -1,6 +1,6 @@
-﻿namespace DC.Lab.ProCSharp.Ch8;
+﻿namespace CustomInterfaces;
 
-public abstract class CustomInterfaces
+public abstract class ClonableType
 {
     //Only derived types can support this "poymorphic interface".
     //Classes in other hierarchies have no access to this abstract member.
