@@ -1,4 +1,5 @@
 ﻿using CustomInterfaces;
+using InterfaceHierarchy;
 using InterfaceNameClash;
 
 Console.WriteLine("***** A First Look at Interfaces *****\n");
@@ -110,6 +111,20 @@ itfForm.Draw();
 if (oct is IDrawToMemory dtm)
 {
     dtm.Draw();
+}
+
+Console.WriteLine("\n***** Simple Interface Hierarchy *****\n");
+
+//Call from object level.
+var myBitmap = new BitmapImage();
+myBitmap.Draw();
+myBitmap.DrawInBoundingBox(10, 10, 100, 150);
+myBitmap.DrawUpsideDown();
+
+//Get IAdvancedDraw explicitly.
+if (myBitmap is IAdvancedDraw advDraw)
+{
+    advDraw.DrawUpsideDown();
 }
 
 Console.ReadLine();
