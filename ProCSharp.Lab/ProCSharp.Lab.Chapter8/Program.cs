@@ -121,10 +121,22 @@ myBitmap.Draw();
 myBitmap.DrawInBoundingBox(10, 10, 100, 150);
 myBitmap.DrawUpsideDown();
 
+Console.WriteLine();
+
 //Get IAdvancedDraw explicitly.
 if (myBitmap is IAdvancedDraw advDraw)
 {
     advDraw.DrawUpsideDown();
+    Console.WriteLine($"Time to draw: {advDraw.TimeToDraw()}");
 }
+
+Console.WriteLine();
+
+//Always call method on instance.
+Console.WriteLine("\n***** Calling Implemented TimeToDraw *****\n");
+
+Console.WriteLine($"Time to draw: {myBitmap.TimeToDraw()}");
+Console.WriteLine($"Time to draw: {((IDrawable)myBitmap).TimeToDraw()}");
+Console.WriteLine($"Time to draw: {((IAdvancedDraw)myBitmap).TimeToDraw()}");
 
 Console.ReadLine();
