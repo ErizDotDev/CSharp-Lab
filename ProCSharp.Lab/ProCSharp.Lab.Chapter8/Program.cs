@@ -1,5 +1,5 @@
 ﻿using CustomInterfaces;
-using System.Security.AccessControl;
+using InterfaceNameClash;
 
 Console.WriteLine("***** A First Look at Interfaces *****\n");
 CloneableExample();
@@ -91,6 +91,25 @@ IPointy[] myPointyObjects = {
 foreach (IPointy i in myPointyObjects)
 {
     Console.WriteLine($"Object has {i.Points} points.");
+}
+
+Console.WriteLine("\n***** Fun with Interface Name Clashes *****\n");
+
+var oct = new Octagon();
+
+//We now must use casting to access the Draw() method.
+var itfForm = (IDrawToForm)oct;
+itfForm.Draw();
+
+//Both of these invocations call the same Draw() method.
+
+//Shorthand notation if you don't need the interface variable for later use.
+((IDrawToPrinter)oct).Draw();
+
+//Could also use the is keyword.
+if (oct is IDrawToMemory dtm)
+{
+    dtm.Draw();
 }
 
 Console.ReadLine();
