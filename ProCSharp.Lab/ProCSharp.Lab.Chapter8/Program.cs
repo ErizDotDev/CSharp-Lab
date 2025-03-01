@@ -77,4 +77,20 @@ var firstPointyItem = FindFirstPointyShape(myShapes);
 //To be safe, use the null conditional operator.
 Console.WriteLine($"The item has {firstPointyItem?.Points} points");
 
+Console.WriteLine();
+
+//This array can only contain types that implement the IPointy interface.
+IPointy[] myPointyObjects = { 
+    new Hexagon(),
+    new Knife(),
+    new Triangle(),
+    new Fork(),
+    new PitchFork()
+};
+
+foreach (IPointy i in myPointyObjects)
+{
+    Console.WriteLine($"Object has {i.Points} points.");
+}
+
 Console.ReadLine();
