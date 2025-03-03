@@ -1,6 +1,8 @@
 ﻿using CustomInterfaces;
+using CustomEnumerator;
 using InterfaceHierarchy;
 using InterfaceNameClash;
+using System.Collections;
 
 Console.WriteLine("***** A First Look at Interfaces *****\n");
 CloneableExample();
@@ -138,5 +140,15 @@ Console.WriteLine("\n***** Calling Implemented TimeToDraw *****\n");
 Console.WriteLine($"Time to draw: {myBitmap.TimeToDraw()}");
 Console.WriteLine($"Time to draw: {((IDrawable)myBitmap).TimeToDraw()}");
 Console.WriteLine($"Time to draw: {((IAdvancedDraw)myBitmap).TimeToDraw()}");
+
+Console.WriteLine("\n***** Fun with IEnumerable / IEnumerator *****\n");
+
+var carLot = new Garage();
+
+// Hand over each car in the collection?
+foreach (Car c in carLot)
+{
+    Console.WriteLine($"{c.Name} is going {c.CurrentSpeed} MPH");
+}
 
 Console.ReadLine();
