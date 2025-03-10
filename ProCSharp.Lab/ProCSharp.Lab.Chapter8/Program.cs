@@ -146,9 +146,20 @@ Console.WriteLine("\n***** Fun with IEnumerable / IEnumerator *****\n");
 var carLot = new Garage();
 
 // Hand over each car in the collection?
-foreach (Car c in carLot)
+//foreach (Car c in carLot)
+//{
+//    Console.WriteLine($"{c.Name} is going {c.CurrentSpeed} MPH");
+//}
+
+Console.WriteLine("\n***** Fun with the yield keyword *****\n");
+
+try
 {
-    Console.WriteLine($"{c.Name} is going {c.CurrentSpeed} MPH");
+    var enumerator = carLot.GetEnumerator();
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"Exception occurred on GetEnumerator.");
 }
 
 Console.ReadLine();

@@ -77,5 +77,22 @@ class Garage : IEnumerable
     //Return the array object's IEnumerator.
     //public IEnumerator GetEnumerator() => carArray.GetEnumerator();
     //Standard way of doing it.
-    IEnumerator IEnumerable.GetEnumerator() => carArray.GetEnumerator();
+    //IEnumerator IEnumerable.GetEnumerator() => carArray.GetEnumerator();
+
+    //Built iterator method.
+    public IEnumerator GetEnumerator()
+    {
+        //This will not get thrown until MoveNext() is called.
+        throw new Exception("This won't get called.");
+
+        return ActualImplementation();
+
+        IEnumerator ActualImplementation()
+        {
+            foreach (var c in carArray)
+            {
+                yield return c;
+            }
+        }
+    }
 }
