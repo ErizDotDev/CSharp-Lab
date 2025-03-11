@@ -154,8 +154,21 @@ var carLot = new Garage();
 Console.WriteLine("\n***** Fun with the yield keyword *****\n");
 
 try
-{
-    var enumerator = carLot.GetEnumerator();
+{ 
+    //var enumerator = carLot.GetEnumerator();
+
+    foreach (Car car in carLot.GetCars(false))
+    {
+        Console.WriteLine($"{car.Name} is going {car.CurrentSpeed} MPH");
+    }
+
+    Console.WriteLine();
+
+    //Get items in reverse using named iterator.
+    foreach (Car c in carLot.GetCars(true))
+    {
+        Console.WriteLine($"{c.Name} is going {c.CurrentSpeed} MPH");
+    }
 }
 catch (Exception ex)
 {

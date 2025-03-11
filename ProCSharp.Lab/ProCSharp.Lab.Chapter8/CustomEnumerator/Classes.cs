@@ -95,4 +95,23 @@ class Garage : IEnumerable
             }
         }
     }
+
+    public IEnumerable GetCars(bool returnReversed)
+    {
+        return ActualImplementation();
+
+        IEnumerable ActualImplementation()
+        {
+            if (returnReversed)
+            {
+                for (int i = carArray.Length; i != 0; i--)
+                    yield return carArray[i - 1];
+            }
+            else
+            {
+                foreach (var c in carArray)
+                    yield return c;
+            }
+        }
+    }
 }
