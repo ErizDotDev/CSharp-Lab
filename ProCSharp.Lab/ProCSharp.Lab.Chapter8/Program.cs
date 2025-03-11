@@ -2,7 +2,7 @@
 using CustomEnumerator;
 using InterfaceHierarchy;
 using InterfaceNameClash;
-using System.Collections;
+using CloneablePoint;
 
 Console.WriteLine("***** A First Look at Interfaces *****\n");
 CloneableExample();
@@ -174,5 +174,27 @@ catch (Exception ex)
 {
     Console.WriteLine($"Exception occurred on GetEnumerator.");
 }
+
+Console.WriteLine("\n***** Fun with object cloning *****\n");
+
+//Two references to the same object
+var p1 = new Point(50, 50);
+Point p2 = p1;
+p2.X = 0;
+
+Console.WriteLine(p1);
+Console.WriteLine(p2);
+
+//Notice Clone() returns a plain object type.
+//You must perform an explicit cast to obtain the derived type.
+var p3 = new Point(100, 100);
+var p4 = (Point)p3.Clone();
+
+//Change p4.X (which will not change p3.X)
+p4.X = 0;
+
+//Print each object.
+Console.WriteLine(p3);
+Console.WriteLine(p4);
 
 Console.ReadLine();
