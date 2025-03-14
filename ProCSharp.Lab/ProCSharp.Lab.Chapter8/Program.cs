@@ -1,4 +1,5 @@
 ﻿using CloneablePoint;
+using ComparableCar;
 using CustomEnumerator;
 using CustomInterfaces;
 using InterfaceHierarchy;
@@ -201,5 +202,31 @@ Console.WriteLine("\nChanged p4.Description.Name and p4.X");
 Console.WriteLine("After modification");
 Console.WriteLine($"p3: {p3}");
 Console.WriteLine($"p4: {p4}");
+
+Console.WriteLine("\n***** Fun with object sorting *****\n");
+
+//Make an array of Car2 objects.
+var myCars = new Car2[5]
+{
+    new Car2("Rusty", 80, 1),
+    new Car2("Mary", 40, 234),
+    new Car2("Viper", 40, 34),
+    new Car2("Mel", 40, 4),
+    new Car2("Chucky", 40, 5)
+};
+
+//Display current array.
+Console.WriteLine("Here is the unordered set of cars:");
+foreach (var c in myCars)
+    Console.WriteLine($"{c.Id} {c.Name}");
+
+//Now sort them using IComparable!
+Array.Sort(myCars);
+Console.WriteLine();
+
+//Display sorted array.
+Console.WriteLine("Here is the ordered set of cars:");
+foreach (var c in myCars)
+    Console.WriteLine($"{c.Id} {c.Name}");
 
 Console.ReadLine();
