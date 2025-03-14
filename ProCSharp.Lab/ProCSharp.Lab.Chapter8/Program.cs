@@ -1,8 +1,8 @@
-﻿using CustomInterfaces;
+﻿using CloneablePoint;
 using CustomEnumerator;
+using CustomInterfaces;
 using InterfaceHierarchy;
 using InterfaceNameClash;
-using CloneablePoint;
 
 Console.WriteLine("***** A First Look at Interfaces *****\n");
 CloneableExample();
@@ -72,7 +72,7 @@ for (int i = 0; i < myShapes.Length; i++)
 Console.WriteLine();
 
 //This method returns the first object in the array theat implements IPointy.
-static IPointy? FindFirstPointyShape(Shape[] shapes) 
+static IPointy? FindFirstPointyShape(Shape[] shapes)
     => shapes.FirstOrDefault(s => s is IPointy) as IPointy;
 
 //Get first pointy item.
@@ -83,7 +83,7 @@ Console.WriteLine($"The item has {firstPointyItem?.Points} points");
 Console.WriteLine();
 
 //This array can only contain types that implement the IPointy interface.
-IPointy[] myPointyObjects = { 
+IPointy[] myPointyObjects = {
     new Hexagon(),
     new Knife(),
     new Triangle(),
@@ -154,7 +154,7 @@ var carLot = new Garage();
 Console.WriteLine("\n***** Fun with the yield keyword *****\n");
 
 try
-{ 
+{
     //var enumerator = carLot.GetEnumerator();
 
     foreach (Car car in carLot.GetCars(false))
@@ -185,16 +185,21 @@ p2.X = 0;
 Console.WriteLine(p1);
 Console.WriteLine(p2);
 
-//Notice Clone() returns a plain object type.
-//You must perform an explicit cast to obtain the derived type.
-var p3 = new Point(100, 100);
+Console.WriteLine("Cloned p3 and stored new point in p4");
+
+var p3 = new Point(100, 100, "Jane");
 var p4 = (Point)p3.Clone();
 
-//Change p4.X (which will not change p3.X)
-p4.X = 0;
+Console.WriteLine("Before modification:");
+Console.WriteLine($"p3: {p3}");
+Console.WriteLine($"p4: {p4}");
 
-//Print each object.
-Console.WriteLine(p3);
-Console.WriteLine(p4);
+p4.Description.Name = "My new Point";
+p4.X = 9;
+
+Console.WriteLine("\nChanged p4.Description.Name and p4.X");
+Console.WriteLine("After modification");
+Console.WriteLine($"p3: {p3}");
+Console.WriteLine($"p4: {p4}");
 
 Console.ReadLine();
