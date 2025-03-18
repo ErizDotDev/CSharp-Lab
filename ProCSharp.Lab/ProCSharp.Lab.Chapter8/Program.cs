@@ -229,4 +229,12 @@ Console.WriteLine("Here is the ordered set of cars:");
 foreach (var c in myCars)
     Console.WriteLine($"{c.Id} {c.Name}");
 
+//Now sort by name.
+Array.Sort(myCars, new CarNameComparer());
+
+//Dump sorted array.
+Console.WriteLine("\nOrdering by pet name:");
+foreach (var c in myCars)
+    Console.WriteLine($"{c.Id} {c.Name}");
+
 Console.ReadLine();

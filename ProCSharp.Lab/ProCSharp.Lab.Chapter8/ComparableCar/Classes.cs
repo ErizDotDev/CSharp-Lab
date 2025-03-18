@@ -1,4 +1,6 @@
-﻿namespace ComparableCar;
+﻿using System.Collections;
+
+namespace ComparableCar;
 
 //The iteration of the Car can be ordered
 //based on the ID.
@@ -86,4 +88,21 @@ class Radio2
 {
     public void TurnOn(bool on) =>
         Console.WriteLine(on ? "Jamming..." : "Quiet time...");
+}
+
+//This helper class is used to sort an array of Cars by name.
+public class CarNameComparer : IComparer
+{
+    //Test the name of each object.
+    int IComparer.Compare(object? o1, object? o2)
+    {
+        if (o1 is Car2 t1 && o2 is Car2 t2)
+        {
+            return string.Compare(t1.Name, t2.Name, StringComparison.CurrentCulture);
+        }
+        else
+        {
+            throw new ArgumentException("Parameter is not a Car!");
+        }
+    }
 }
