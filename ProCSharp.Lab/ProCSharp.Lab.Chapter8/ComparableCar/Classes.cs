@@ -9,6 +9,10 @@ class Car2 : IComparable
     //Constant for maximum speed.
     public const int MaxSpeed = 100;
 
+    //We now support a custom property to return
+    //the correct IComparer interface.
+    public static IComparer SortByName => (IComparer)new CarNameComparer();
+
     //Car properties.
     public int Id { get; set; }
     public int CurrentSpeed { get; set; } = 0;

@@ -231,6 +231,8 @@ foreach (var c in myCars)
 
 //Now sort by name.
 Array.Sort(myCars, new CarNameComparer());
+//Can also do it this way using the SortByName property.
+//Array.Sort(myCars, Car2.SortByName);
 
 //Dump sorted array.
 Console.WriteLine("\nOrdering by pet name:");
