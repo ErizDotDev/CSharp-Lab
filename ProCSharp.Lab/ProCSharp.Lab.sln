@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProCSharp.Lab.Chapter8", "ProCSharp.Lab.Chapter8\ProCSharp.Lab.Chapter8.csproj", "{DD2EFDEA-4F5C-DB53-8657-5103F18BCDE2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProCSharp.Lab.Chapter9", "ProCSharp.Lab.Chapter9\ProCSharp.Lab.Chapter9.csproj", "{960E6F26-A7AC-4AC1-8315-9B8CC8BA6224}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DD2EFDEA-4F5C-DB53-8657-5103F18BCDE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD2EFDEA-4F5C-DB53-8657-5103F18BCDE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD2EFDEA-4F5C-DB53-8657-5103F18BCDE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{960E6F26-A7AC-4AC1-8315-9B8CC8BA6224}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{960E6F26-A7AC-4AC1-8315-9B8CC8BA6224}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{960E6F26-A7AC-4AC1-8315-9B8CC8BA6224}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{960E6F26-A7AC-4AC1-8315-9B8CC8BA6224}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
